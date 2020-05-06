@@ -19,6 +19,7 @@ import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
+import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { EditMovieComponent } from './edit-movie/edit-movie.component';
     CreateMovieComponent,
     MovieDetailsComponent,
     MovieListComponent,
-    EditMovieComponent
+    EditMovieComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,

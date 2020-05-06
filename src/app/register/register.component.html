@@ -4,7 +4,7 @@
       id="profile-img"
       src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
       class="profile-img-card"
-      style="width: 200px; margin: auto; border: black; border-radius: 100px;"
+      style="width: 200px; margin: auto; margin-bottom: 25px; border: black; border-radius: 100px;"
     />
     <form
       *ngIf="!isSuccessful"
@@ -46,7 +46,7 @@
           email
           #email="ngModel"
         />
-        <div class="alert-danger" *ngIf="email.touched && email.invalid">
+        <div class="alert-danger" *ngIf="f.submitted && email.invalid">
           <div *ngIf="email.errors.required">Email is required</div>
           <div *ngIf="email.errors.email">
             Email must be a valid email address
@@ -87,13 +87,13 @@
         <div class="alert-danger"
              *ngIf="confirmPassword.touched && confirmPassword.errors?.notEqual &&
           !confirmPassword.errors?.required">
-          Password and Confirm Password does not match
+          Passwords does not match!
         </div>
       </div>
 
-  <div class="form-group">
-    <button class="btn btn-primary btn-block">Sign Up</button>
-  </div>
+      <div class="form-group" *ngIf="confirmPassword.touched && !confirmPassword.errors?.notEqual; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock><button class="btn btn-primary btn-block">Sign Up</button></ng-template>
+    <ng-template #elseBlock><button disabled class="btn btn-primary btn-block">Sign Up</button></ng-template>
 
   <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
     Signup failed!<br/>{{ errorMessage }}
