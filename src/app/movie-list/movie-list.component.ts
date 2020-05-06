@@ -26,4 +26,8 @@ export class MovieListComponent implements OnInit {
     this.router.navigate(['movies/details/', id]);
   }
 
+  movieEdit(id: number){
+    this.router.navigate(['movies/edit/', id]);
+  }
+
 }

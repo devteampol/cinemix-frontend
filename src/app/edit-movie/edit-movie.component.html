@@ -1,0 +1,29 @@
+<h2>Edit Movie - {{movie.title}} </h2>
+
+<hr/>
+<form (ngSubmit)="onSubmit()">
+  <div *ngIf="movie">
+    <div>
+      <label><b>New title: </b></label>
+      <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title">
+    </div>
+    <br>
+    <div>
+      <label><b>New author: </b></label>
+      <input type="text" class="form-control" id="author" required [(ngModel)]="movie.author" name="author">
+    </div>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-success">Update movie</button>
+</form>
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Movie List</button><br>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>
+<div [hidden]="isLoggedIn">
+  <h4>You have no access here!</h4>
+</div>
