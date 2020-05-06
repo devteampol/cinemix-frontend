@@ -18,6 +18,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { EditMovieComponent } from './edit-movie/edit-movie.component';
+import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { MovieListComponent } from './movie-list/movie-list.component';
     BoardUserComponent,
     CreateMovieComponent,
     MovieDetailsComponent,
-    MovieListComponent
+    MovieListComponent,
+    EditMovieComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,

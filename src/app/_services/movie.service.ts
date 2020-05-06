@@ -21,6 +21,10 @@ export class MovieService {
     return this.http.post(`${API_URL + API_MOVIE_URL + 'add'}`, movie);
   }
 
+  updateMovie(movie: Object, id: number): Observable<Object> {
+    return this.http.put(`${API_URL + API_MOVIE_URL + 'update'}`, movie);
+  }
+
   getMovieList(): Observable<any> {
     return this.http.get(`${API_URL + API_MOVIE_URL + 'all'}`);
   }

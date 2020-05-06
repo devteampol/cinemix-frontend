@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Movie } from '../_models/movie';
-import { MovieService } from '../_services/movie.service';
-import { Router } from '@angular/router';
-import { TokenStorageService } from '../_services/token-storage.service';
+import {Component, OnInit} from '@angular/core';
+import {Movie} from '../_models/movie';
+import {MovieService} from '../_services/movie.service';
+import {Router} from '@angular/router';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-create-movie',
@@ -15,9 +15,10 @@ export class CreateMovieComponent implements OnInit {
   submitted = false;
   isLoggedIn = false;
 
-  constructor(private tokenStorage: TokenStorageService ,private movieService: MovieService, private router: Router) { }
+  constructor(private tokenStorage: TokenStorageService, private movieService: MovieService, private router: Router) {
+  }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
     }
@@ -36,7 +37,7 @@ export class CreateMovieComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.save();    
+    this.save();
   }
 
   gotoList() {
