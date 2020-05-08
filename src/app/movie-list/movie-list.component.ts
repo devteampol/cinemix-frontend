@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Movie } from '../_models/movie';
-import { Observable } from 'rxjs';
-import { MovieService } from '../_services/movie.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Movie} from '../_models/movie';
+import {Observable} from 'rxjs';
+import {MovieService} from '../_services/movie.service';
+import {Router} from '@angular/router';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -11,22 +12,39 @@ import { Router } from '@angular/router';
 })
 export class MovieListComponent implements OnInit {
   movies: Observable<Movie[]>;
+  private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username: string;
 
-  constructor(private movieService: MovieService, private router: Router) { }
+  constructor(private movieService: MovieService, private router: Router, private tokenStorageService: TokenStorageService) {
+  }
 
   ngOnInit(): void {
     this.reloadData();
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+      this.username = user.username;
+    }
   }
 
   reloadData() {
     this.movies = this.movieService.getMovieList();
   }
 
-  movieDetails(id: number){
+  movieDetails(id: number) {
     this.router.navigate(['movies/details/', id]);
   }
 
-  movieEdit(id: number){
+  movieEdit(id: number) {
     this.router.navigate(['movies/edit/', id]);
   }
 

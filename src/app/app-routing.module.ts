@@ -12,6 +12,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
+import { RepertoireComponent} from './repertoire/repertoire.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'movies/details/:id', component: MovieDetailsComponent },
   { path: 'movies/add', component: CreateMovieComponent },
   { path: 'movies/edit/:id', component: EditMovieComponent },
+  { path: 'repertoire', component: RepertoireComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

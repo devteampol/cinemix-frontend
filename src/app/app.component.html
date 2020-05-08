@@ -3,7 +3,7 @@
     <a href="#" class="navbar-brand">Cinemix</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
+        <a href="/home" class="nav-link" routerLink="home">Home</a>
       </li>
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
@@ -15,10 +15,20 @@
         <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
       </li>
       <li class="nav-item">
-        <a href="/movies" class="nav-link" routerLink="movies">Movies </a>
+        <a href="/movies" class="nav-link" routerLink="movies">Movies</a>
+        <ul>
+          <li class="nav-item" *ngIf="showAdminBoard">
+            <a href="/movies/add" class="nav-link" routerLink="movies/add">Add Movie</a>
+          </li>
+        </ul>
       </li>
-      <li class="nav-item" *ngIf="showAdminBoard">
-        <a href="/movies/add" class="nav-link" routerLink="movies/add">Add Movie</a>
+      <li class="nav-item">
+        <a href="/repertoire" class="nav-link" routerLink="repertoire">Repertoire</a>
+        <ul>
+          <li class="nav-item" *ngIf="showAdminBoard">
+            <a href="/repertoire/add" class="nav-link" routerLink="repertoire/add">Add Seanse</a>
+          </li>
+        </ul>
       </li>
     </ul>
 
@@ -27,16 +37,16 @@
         <a href="/register" class="nav-link" routerLink="register">Register</a>
       </li>
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
+        <a href="/login" class="nav-link" routerLink="login" style="color: dodgerblue">Login</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+        <a href="/profile" class="nav-link" routerLink="profile" style="text-transform: uppercase">{{ username }}</a>
       </li>
       <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
+        <a href class="nav-link" (click)="logout()" style="color: red">Logout</a>
       </li>
     </ul>
   </nav>

@@ -3,22 +3,22 @@
 <hr/>
 <form (ngSubmit)="onSubmit()">
   <div *ngIf="movie">
-    <div>
-      <label><b>New title: </b></label>
+    <div class="controls">
+      <label><b>New title</b></label>
       <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title">
     </div>
     <br>
-    <div>
-      <label><b>New author: </b></label>
+    <div class="controls">
+      <label><b>New author</b></label>
       <input type="text" class="form-control" id="author" required [(ngModel)]="movie.author" name="author">
     </div>
   </div>
   <br>
-  <button type="submit" class="btn btn-success">Update movie</button>
+  <div class="buttons">
+    <button type="submit" class="btn btn-success">Update movie</button>
+    <button (click)="list()" class="btn btn-primary">Back to Movie List</button><br>
+  </div>
 </form>
-<br>
-<br>
-<button (click)="list()" class="btn btn-primary">Back to Movie List</button><br>
 
 <div [hidden]="!submitted">
   <h4>You submitted successfully!</h4>
