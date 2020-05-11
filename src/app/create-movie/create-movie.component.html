@@ -1,6 +1,6 @@
 <h3>Create Movie</h3>
 <div [hidden]="!isLoggedIn">
-  <div [hidden]="submitted" style="width: 400px;">
+  <div [hidden]="submitted" style="width: 400px; margin: auto;">
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="name">Title</label>
@@ -12,7 +12,7 @@
         <input type="text" class="form-control" id="author" required [(ngModel)]="movie.author" name="author">
       </div>
 
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Submit</button>
     </form>
   </div>
 

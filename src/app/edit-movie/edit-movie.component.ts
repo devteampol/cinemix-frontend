@@ -33,8 +33,7 @@ export class EditMovieComponent implements OnInit {
   }
 
   update() {
-    // this.movieService.createMovie(this.movie).subscribe(data => console.log(data), error => console.log(error));
-    // this.movie = new Movie();
+    this.movieService.updateMovie(this.movie).subscribe(data => console.log(data), error => console.log(error));
     this.list();
   }
 

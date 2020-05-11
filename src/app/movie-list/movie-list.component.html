@@ -8,15 +8,16 @@
       <tr>
         <th>Title</th>
         <th>Author</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let movie of movies | async">
         <td>{{movie.title}}</td>
         <td>{{movie.author}}</td>
-        <td>
-          <button (click)="movieDetails(movie.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-          <button (click)="movieEdit(movie.id)" class="btn btn-info" style="margin-left: 10px">Edit</button>
+        <td class="buttons">
+          <button (click)="movieDetails(movie.id)" class="btn btn-info">Details</button>
+          <button (click)="movieEdit(movie.id)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
         </td>
       </tr>
       </tbody>
