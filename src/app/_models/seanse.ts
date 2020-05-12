@@ -1,22 +1,21 @@
 import {Movie} from './movie';
-import {Time} from '@angular/common';
 
 export class Seanse {
   id: number;
   movie: Movie;
-  time: Time;
+  date: String;
   room: number;
 
   getId(): number {
     return this.id;
   }
 
-  getMovie(): string {
-    return this.movie.title;
+  getMovie(): Movie {
+    return this.movie;
   }
 
-  getTime(): Time {
-    return this.time;
+  getTime(): String {
+    return this.date;
   }
 
   getRoom(): number {
