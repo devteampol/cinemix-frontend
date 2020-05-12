@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const API_URL = environment.apiUrl;
-const API_SEANSE_URL = 'api/seanses/';
+const API_SEANSE_URL = 'api/screenings/';
 
 @Injectable({
   providedIn: 'root'

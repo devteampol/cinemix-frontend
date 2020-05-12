@@ -24,6 +24,6 @@ export class RepertoireComponent implements OnInit {
   }
 
   seanseEdit(id: number) {
-    this.router.navigate(['seanses/edit/', id]);
+    this.router.navigate(['screenings/edit/', id]);
   }
 }
