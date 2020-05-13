@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
-import {Seanse} from '../_models/seanse';
-import {SeanseService} from '../_services/seanse.service';
+import {Screening} from '../_models/screening';
+import {ScreeningService} from '../_services/screening.service';
 
 @Component({
   selector: 'app-repertoire',
@@ -10,9 +10,9 @@ import {SeanseService} from '../_services/seanse.service';
   styleUrls: ['./repertoire.component.sass']
 })
 export class RepertoireComponent implements OnInit {
-  seanses: Observable<Seanse[]>;
+  screenings: Observable<Screening[]>;
 
-  constructor(private seanseService: SeanseService, private router: Router) {
+  constructor(private screeningService: ScreeningService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -20,10 +20,10 @@ export class RepertoireComponent implements OnInit {
   }
 
   reloadData() {
-    this.seanses = this.seanseService.getSeanseList();
+    this.screenings = this.screeningService.getScreeningList();
   }
 
-  seanseEdit(id: number) {
-    this.router.navigate(['seanses/edit/', id]);
+  screeningEdit(id: number) {
+    this.router.navigate(['repertoire/edit/', id]);
   }
 }
