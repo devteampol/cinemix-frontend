@@ -3,7 +3,23 @@ import {MovieService} from '../_services/movie.service';
 
 export class Screening {
   id: number;
-  movie: number;
-  date: string;
+  movie: Movie;
+  date: String;
   room: number;
+
+  getId(): number {
+    return this.id;
+  }
+
+  getMovie(): Movie {
+    return this.movie;
+  }
+
+  getTime(): String {
+    return this.date;
+  }
+
+  getRoom(): number {
+    return this.room;
+  }
 }

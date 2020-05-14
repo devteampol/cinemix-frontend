@@ -14,7 +14,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let screening of screenings | async">
-        <td>{{screening.id}}</td>
+        <td>{{screening.movie.title}}</td>
         <td>{{screening.room}}</td>
         <td>{{screening.date}}</td>
         <td class="buttons">
