@@ -23,3 +23,9 @@ export class Screening {
     return this.room;
   }
 }
+
+export class ScreeningDto {
+  movie: number;
+  date: String;
+  room: number;
+}
