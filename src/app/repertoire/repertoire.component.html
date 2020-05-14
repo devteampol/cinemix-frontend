@@ -13,10 +13,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let seanse of seanses | async">
-        <td>{{seanse.movie.title}}</td>
-        <td>{{seanse.room}}</td>
-        <td>{{seanse.date}}</td>
+      <tr *ngFor="let screening of screenings | async">
+        <td>{{screening.movie.title}}</td>
+        <td>{{screening.room}}</td>
+        <td>{{screening.date}}</td>
         <td class="buttons">
           <button class="btn btn-info">Reserve ticket</button>
           <button class="btn btn-info">Buy ticket</button>

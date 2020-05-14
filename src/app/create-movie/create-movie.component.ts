@@ -43,5 +43,4 @@ export class CreateMovieComponent implements OnInit {
   gotoList() {
     this.router.navigate(['movies']);
   }
-
 }

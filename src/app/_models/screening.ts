@@ -1,6 +1,7 @@
 import {Movie} from './movie';
+import {MovieService} from '../_services/movie.service';
 
-export class Seanse {
+export class Screening {
   id: number;
   movie: Movie;
   date: String;
