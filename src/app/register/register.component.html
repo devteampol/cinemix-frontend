@@ -83,7 +83,7 @@
           id="confirmPassword"
           type="password"
           class="form-control"
-          [(ngModel)]="formz.confirmPassword"
+          [(ngModel)]="detached.confirmPassword"
           #confirmPassword="ngModel"
         />
         <div class="alert-danger" *ngIf="(confirmPassword.touched && confirmPassword.errors?.notEqual &&
