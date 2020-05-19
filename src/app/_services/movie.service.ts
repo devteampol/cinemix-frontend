@@ -25,6 +25,10 @@ export class MovieService {
     return this.http.put(`${API_URL + API_MOVIE_URL + 'edit'}`, movie);
   }
 
+  deleteMovie(movie: Object): Observable<Object> {
+    return this.http.delete(`${API_URL + API_MOVIE_URL + 'delete'}`, movie);
+  }
+
   getMovieList(): Observable<any> {
     return this.http.get(`${API_URL + API_MOVIE_URL + 'all'}`);
   }

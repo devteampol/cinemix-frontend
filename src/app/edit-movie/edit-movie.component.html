@@ -1,28 +1,45 @@
-<h2>Edit Movie - {{movie.title}} </h2>
+<h2>Edit Movie</h2>
+<h2>"{{movie.title}}"</h2>
 
 <hr/>
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
   <div *ngIf="movie">
     <div class="controls">
       <label><b>New title</b></label>
-      <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title">
+      <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title"
+             #title="ngModel">
+    </div>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && title.invalid">
+      Enter new movie title!
     </div>
     <br>
     <div class="controls">
       <label><b>New author</b></label>
-      <input type="text" class="form-control" id="author" required [(ngModel)]="movie.author" name="author">
+      <input type="text" class="form-control" id="author" required [(ngModel)]="movie.author" name="author"
+             #author="ngModel">
+    </div>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && author.invalid">
+      Enter new movie author!
     </div>
   </div>
   <br>
   <div class="buttons">
     <button type="submit" class="btn btn-success">Update movie</button>
-    <button (click)="list()" class="btn btn-primary">Back to Movie List</button><br>
+    <button (click)="list()" class="btn btn-primary">Back to Movie List</button>
+    <br>
   </div>
 </form>
 
 <div [hidden]="!submitted">
   <h4>You submitted successfully!</h4>
-  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
 </div>
 <div [hidden]="isLoggedIn">
   <h4>You have no access here!</h4>

@@ -25,6 +25,10 @@ export class ScreeningService {
     return this.http.put(`${API_URL + API_SCREENING_URL + 'edit'}`, screening);
   }
 
+  deleteScreening(screening: Object): Observable<Object> {
+    return this.http.delete(`${API_URL + API_SCREENING_URL + 'delete'}`, screening);
+  }
+
   getScreeningList(): Observable<any> {
     return this.http.get(`${API_URL + API_SCREENING_URL + 'all'}`);
   }

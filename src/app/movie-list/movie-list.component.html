@@ -18,6 +18,7 @@
         <td class="buttons">
           <button (click)="movieDetails(movie.id)" class="btn btn-info">Details</button>
           <button (click)="movieEdit(movie.id)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
+          <button (click)="movieDelete(movie)" class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
         </td>
       </tr>
       </tbody>

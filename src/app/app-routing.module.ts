@@ -14,6 +14,8 @@ import {CreateMovieComponent} from './create-movie/create-movie.component';
 import {EditMovieComponent} from './edit-movie/edit-movie.component';
 import {RepertoireComponent} from './repertoire/repertoire.component';
 import {CreateScreeningComponent} from './create-screening/create-screening.component';
+import {EditScreeningComponent} from './edit-screening/edit-screening.component';
+
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -29,6 +31,7 @@ const routes: Routes = [
   {path: 'movies/edit/:id', component: EditMovieComponent},
   {path: 'repertoire', component: RepertoireComponent},
   {path: 'repertoire/add', component: CreateScreeningComponent},
+  {path: 'repertoire/edit/:id', component: EditScreeningComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 

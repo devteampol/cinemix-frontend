@@ -48,4 +48,9 @@ export class MovieListComponent implements OnInit {
     this.router.navigate(['movies/edit/', id]);
   }
 
+  movieDelete(movie: Object) {
+    this.movieService.deleteMovie(movie);
+    this.reloadData();
+  }
+
 }

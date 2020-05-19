@@ -22,6 +22,7 @@ import { EditMovieComponent } from './edit-movie/edit-movie.component';
 import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.directive';
 import { RepertoireComponent } from './repertoire/repertoire.component';
 import { CreateScreeningComponent } from './create-screening/create-screening.component';
+import { EditScreeningComponent } from './edit-screening/edit-screening.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CreateScreeningComponent } from './create-screening/create-screening.co
     EditMovieComponent,
     ConfirmEqualValidatorDirective,
     RepertoireComponent,
-    CreateScreeningComponent
+    CreateScreeningComponent,
+    EditScreeningComponent
   ],
   imports: [
     BrowserModule,
