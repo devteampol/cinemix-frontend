@@ -1,13 +1,15 @@
-<h2>Create Seanse</h2>
+<h2>Edit Seanse '{{screening.id}}'</h2>
+<h2>"{{screening.movie.title}}, room {{screening.room}}, {{screening.date}}"</h2>
 <div [hidden]="!isLoggedIn">
   <div [hidden]="submitted" style="width: 400px; margin: auto;">
     <form (ngSubmit)="f.form.valid && onSubmit()"
           #f="ngForm"
           novalidate>
       <div class="form-group">
-        <label for="movie">Select movie</label>
-        <select class="form-control" id="movie" required [(ngModel)]="screening.movie" name="movie" #movie="ngModel">
-          <option *ngFor="let movie of movies | async" value="{{movie.id}}">{{movie.title}}</option>
+        <label for="movie">Select new movie</label>
+        <select [compareWith]="compareFn" class="form-control" id="movie" required [(ngModel)]="screening.movie"
+                name="movie" #movie="ngModel">
+          <option *ngFor="let movie of movies | async" [ngValue]="movie">{{movie.title}}</option>
         </select>
       </div>
       <div
@@ -18,7 +20,7 @@
       </div>
 
       <div class="form-group">
-        <label for="room">Room</label>
+        <label for="room">Select new room</label>
         <select class="form-control" id="room" required [(ngModel)]="screening.room" name="room" #room="ngModel">
           <option value="1">Room 1</option>
           <option value="2">Room 2</option>
@@ -38,7 +40,7 @@
       </div>
 
       <div class="form-group">
-        <label for="date">Date</label>
+        <label for="date">Enter new date</label>
         <input type="text" class="form-control" id="date" required [(ngModel)]="screening.date" name="date"
                #date="ngModel">
       </div>
@@ -49,7 +51,12 @@
         Enter seanse date!
       </div>
 
-      <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Submit</button>
+      <div class="buttons">
+        <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Update seanse</button>
+        <button (click)="gotoList()" class="btn btn-primary" style="width: 100%; margin: 10px auto;">Back to
+          Repertoire
+        </button>
+      </div>
     </form>
   </div>
 </div>

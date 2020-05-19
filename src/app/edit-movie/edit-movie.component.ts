@@ -16,7 +16,10 @@ export class EditMovieComponent implements OnInit {
   submitted = false;
   isLoggedIn = false;
 
-  constructor(private tokenStorage: TokenStorageService, private route: ActivatedRoute, private router: Router, private movieService: MovieService) {
+  constructor(private tokenStorage: TokenStorageService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private movieService: MovieService) {
   }
 
   ngOnInit(): void {
