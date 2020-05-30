@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {environment} from 'src/environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 const API_URL = environment.apiUrl;
 const API_SCREENING_URL = 'api/screenings/';
@@ -11,7 +11,8 @@ const API_SCREENING_URL = 'api/screenings/';
 })
 export class ScreeningService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getScreening(id: number): Observable<any> {
     return this.http.get(`${API_URL + API_SCREENING_URL}${id}`);
@@ -25,8 +26,8 @@ export class ScreeningService {
     return this.http.put(`${API_URL + API_SCREENING_URL + 'edit'}`, screening);
   }
 
-  deleteScreening(screening: Object): Observable<Object> {
-    return this.http.delete(`${API_URL + API_SCREENING_URL + 'delete'}`, screening);
+  deleteScreening(id: number): Observable<any> {
+    return this.http.delete(`${API_URL + API_SCREENING_URL + 'delete/'}${id}`);
   }
 
   getScreeningList(): Observable<any> {

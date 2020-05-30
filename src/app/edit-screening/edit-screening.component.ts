@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Movie} from '../_models/movie';
 import {MovieService} from '../_services/movie.service';
-import {ScreeningMovieL} from '../_models/screeningMovieL';
+import {ScreeningTranslated} from '../_models/screeningTranslated';
 
 @Component({
   selector: 'app-edit-screening',
@@ -17,7 +17,7 @@ export class EditScreeningComponent implements OnInit {
 
   id: number;
   screening: Screening;
-  screeningLongM: ScreeningMovieL;
+  screeningTranslated: ScreeningTranslated;
   movies: Observable<Movie[]>;
   submitted = false;
   isLoggedIn = false;
@@ -44,11 +44,11 @@ export class EditScreeningComponent implements OnInit {
   }
 
   translateScreening() {
-    this.screeningLongM = new ScreeningMovieL();
-    this.screeningLongM.id = this.screening.id;
-    this.screeningLongM.movie = this.screening.movie.id;
-    this.screeningLongM.room = this.screening.room;
-    this.screeningLongM.date = this.screening.date;
+    this.screeningTranslated = new ScreeningTranslated();
+    this.screeningTranslated.id = this.screening.id;
+    this.screeningTranslated.movie = this.screening.movie.id;
+    this.screeningTranslated.room = this.screening.room;
+    this.screeningTranslated.date = this.screening.date;
   }
 
   compareFn(m1: Movie, m2: Movie): boolean {
@@ -61,7 +61,7 @@ export class EditScreeningComponent implements OnInit {
 
   update() {
     this.translateScreening();
-    this.screeningService.updateScreening(this.screeningLongM).subscribe(data => console.log(data), error => console.log(error));
+    this.screeningService.updateScreening(this.screeningTranslated).subscribe(data => console.log(data), error => console.log(error));
     this.gotoList();
   }
 

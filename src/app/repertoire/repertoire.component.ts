@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {Screening} from '../_models/screening';
 import {ScreeningService} from '../_services/screening.service';
 import {TokenStorageService} from '../_services/token-storage.service';
-import {ScreeningMovieL} from '../_models/screeningMovieL';
 
 @Component({
   selector: 'app-repertoire',
@@ -13,7 +12,6 @@ import {ScreeningMovieL} from '../_models/screeningMovieL';
 })
 export class RepertoireComponent implements OnInit {
   screenings: Observable<Screening[]>;
-  screeningLongM: ScreeningMovieL;
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
@@ -46,18 +44,11 @@ export class RepertoireComponent implements OnInit {
     this.router.navigate(['repertoire/edit/', id]);
   }
 
-  translateScreening(screening: Screening) {
-    this.screeningLongM = new ScreeningMovieL();
-    this.screeningLongM.id = screening.id;
-    this.screeningLongM.movie = screening.movie.id;
-    this.screeningLongM.room = screening.room;
-    this.screeningLongM.date = screening.date;
-    this.screeningDelete(this.screeningLongM);
-  }
-
-  screeningDelete(screening: Object) {
-    this.screeningService.deleteScreening(screening);
-    this.reloadData();
+  screeningDelete(screening: Screening) {
+    this.screeningService.deleteScreening(screening.id).subscribe(data => console.log(data), error => console.log(error));
+    setTimeout(() => {
+      console.log(this.reloadData());
+    }, 100);
   }
 
 }
