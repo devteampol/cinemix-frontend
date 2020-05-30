@@ -1,4 +1,4 @@
-export class ScreeningMovieL {
+export class ScreeningTranslated {
   id: number;
   movie: number;
   date: string;

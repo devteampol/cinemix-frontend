@@ -20,7 +20,7 @@
         <td class="buttons">
           <button class="btn btn-outline-info" *ngIf="isLoggedIn">Reserve ticket</button>
           <button (click)="screeningEdit(screening.id)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
-          <button (click)="translateScreening(screening)" class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
+          <button (click)="screeningDelete(screening)" class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
         </td>
       </tr>
       </tbody>
