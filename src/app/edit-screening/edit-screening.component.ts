@@ -62,7 +62,9 @@ export class EditScreeningComponent implements OnInit {
   update() {
     this.translateScreening();
     this.screeningService.updateScreening(this.screeningTranslated).subscribe(data => console.log(data), error => console.log(error));
-    this.gotoList();
+    setTimeout(() => {
+      console.log(this.gotoList());
+    }, 100);
   }
 
   onSubmit() {

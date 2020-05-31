@@ -1,27 +1,36 @@
-*
+.nav_bar
+  background-color: dodgerblue
+
+.navbar-brand
+  font-weight: bold
+  color: darkblue
+  font-size: 30px
+  transition: 2500ms
+
+.navbar-brand:hover
+  color: lightgoldenrodyellow
+  transition: 350ms
+
+.nav-item
+  text-align: center
+
+.nav-item a
+  color: black
+  font-weight: bolder
+  text-align: center
+  padding: 0 20px 0 20px
+  transition: 1500ms
+
+.nav-item a:hover
+  color: white
   transition: 200ms
 
-ul li
-  list-style: none
-  position: relative
-  padding: 10px 0
+.navi_block
+  margin: auto
 
-ul li ul
-    position: absolute
-    top: 68px
-    left: -50px
-    display: block
-    width: 200px
-    opacity: 0
-    visibility: hidden
-    transition: 125ms
-    z-index: 5
-    border-radius: 10px
-    background-color: #363840
+.login_block *
+  border: none
+  font-size: 20px
 
-ul li:hover ul
-  opacity: 1
-  visibility: visible
-
-ul li ul li
-  font-weight: bold
+.login_block ul li:hover
+  color: white

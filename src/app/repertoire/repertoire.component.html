@@ -1,29 +1,31 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h2>Repertoire</h2>
+<h2>Repertoire</h2>
+
+<hr/>
+<header class="jumbotron">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Movie</th>
+          <th>Room</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let screening of screenings | async">
+          <td>{{screening.movie.title}}</td>
+          <td>{{screening.room}}</td>
+          <td>{{screening.date}}</td>
+          <td class="buttons">
+            <button class="btn btn-outline-info" *ngIf="isLoggedIn">Reserve ticket</button>
+            <button (click)="screeningEdit(screening.id)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
+            <button (click)="screeningDelete(screening)" class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div class="panel-body">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th>Movie</th>
-        <th>Room</th>
-        <th>Date</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let screening of screenings | async">
-        <td>{{screening.movie.title}}</td>
-        <td>{{screening.room}}</td>
-        <td>{{screening.date}}</td>
-        <td class="buttons">
-          <button class="btn btn-outline-info" *ngIf="isLoggedIn">Reserve ticket</button>
-          <button (click)="screeningEdit(screening.id)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
-          <button (click)="screeningDelete(screening)" class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+</header>
