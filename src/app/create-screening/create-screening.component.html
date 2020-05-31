@@ -1,55 +1,58 @@
 <h2>Create Seanse</h2>
-<div [hidden]="!isLoggedIn">
-  <div [hidden]="submitted" style="width: 400px; margin: auto;">
-    <form (ngSubmit)="f.form.valid && onSubmit()"
-          #f="ngForm"
-          novalidate>
-      <div class="form-group">
-        <label for="movie">Select movie</label>
-        <select class="form-control" id="movie" required [(ngModel)]="screening.movie" name="movie" #movie="ngModel">
-          <option *ngFor="let movie of movies | async" value="{{movie.id}}">{{movie.title}}</option>
-        </select>
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && movie.invalid">
-        Choose a movie!
-      </div>
+<hr/>
+<header class="jumbotron">
+  <div [hidden]="!isLoggedIn">
+    <div [hidden]="submitted" style="width: 400px; margin: auto;">
+      <form (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate>
+        <div class="form-group">
+          <label for="movie">Select movie</label>
+          <select class="form-control" id="movie" required [(ngModel)]="screening.movie" name="movie" #movie="ngModel">
+            <option *ngFor="let movie of movies | async" value="{{movie.id}}">{{movie.title}}</option>
+          </select>
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && movie.invalid">
+          Choose a movie!
+        </div>
 
-      <div class="form-group">
-        <label for="room">Room</label>
-        <select class="form-control" id="room" required [(ngModel)]="screening.room" name="room" #room="ngModel">
-          <option value="1">Room 1</option>
-          <option value="2">Room 2</option>
-          <option value="3">Room 3</option>
-          <option value="4">Room 4</option>
-          <option value="5">Room 5</option>
-          <option value="6">Room 6</option>
-          <option value="7">Room 7</option>
-          <option value="8">Room 8</option>
-        </select>
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && room.invalid">
-        Choose a room!
-      </div>
+        <div class="form-group">
+          <label for="room">Room</label>
+          <select class="form-control" id="room" required [(ngModel)]="screening.room" name="room" #room="ngModel">
+            <option value="1">Room 1</option>
+            <option value="2">Room 2</option>
+            <option value="3">Room 3</option>
+            <option value="4">Room 4</option>
+            <option value="5">Room 5</option>
+            <option value="6">Room 6</option>
+            <option value="7">Room 7</option>
+            <option value="8">Room 8</option>
+          </select>
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && room.invalid">
+          Choose a room!
+        </div>
 
-      <div class="form-group">
-        <label for="date">Date</label>
-        <input type="text" class="form-control" id="date" required [(ngModel)]="screening.date" name="date"
-               #date="ngModel">
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && date.invalid">
-        Enter seanse date!
-      </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="text" class="form-control" id="date" required [(ngModel)]="screening.date" name="date"
+                 #date="ngModel">
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && date.invalid">
+          Enter seanse date!
+        </div>
 
-      <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Submit</button>
-    </form>
+        <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Submit</button>
+      </form>
+    </div>
   </div>
-</div>
+</header>

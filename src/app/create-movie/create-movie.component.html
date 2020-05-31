@@ -1,41 +1,79 @@
 <h2>Create Movie</h2>
-<div [hidden]="!isLoggedIn">
-  <div [hidden]="submitted" style="width: 400px; margin: auto;">
-    <form (ngSubmit)="f.form.valid && onSubmit()"
-          #f="ngForm"
-          novalidate>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title"
-               #title="ngModel">
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && title.invalid">
-        Enter movie title!
-      </div>
+<hr/>
+<header class="jumbotron">
+  <div [hidden]="!isLoggedIn">
+    <div [hidden]="submitted" style="width: 400px; margin: auto;">
+      <form (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate>
+        <div class="form-group">
+          <label for="title">Title<b>*</b></label>
+          <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title"
+                 #title="ngModel">
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && title.invalid">
+          Enter movie title!
+        </div>
 
-      <div class="form-group">
-        <label for="author">Author</label>
-        <input type="text" class="form-control" id="author" required [(ngModel)]="movie.author" name="author"
-               #author="ngModel">
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && author.invalid">
-        Enter movie author!
-      </div>
+        <div class="form-group">
+          <label for="author">Author<b>*</b></label>
+          <input type="text" class="form-control" id="author" required [(ngModel)]="movie.author" name="author"
+                 #author="ngModel">
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && author.invalid">
+          Enter movie author!
+        </div>
 
-      <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Submit</button>
-    </form>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" [(ngModel)]="movie.description" name="description">
+        </div>
+
+        <div class="form-group">
+          <label for="year">Year</label>
+          <input type="number" class="form-control" id="year" [(ngModel)]="movie.author" name="year"
+                 #year="ngModel">
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && year.invalid">
+          Enter valid year!
+        </div>
+
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input type="text" class="form-control" id="country" [(ngModel)]="movie.country" name="country">
+        </div>
+
+        <div class="form-group">
+          <label for="duration">Duration<b>*</b></label>
+          <input type="number" class="form-control" id="duration" required [(ngModel)]="movie.duration" name="duration"
+                 #duration="ngModel">
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && duration.invalid">
+          Enter movie duration in minutes.
+        </div>
+
+        <p>Fields marked with <b>*</b> are required.</p>
+        <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Submit</button>
+      </form>
+    </div>
+
+    <div [hidden]="!submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
   </div>
-
-  <div [hidden]="!submitted">
-    <h4>You submitted successfully!</h4>
+  <div [hidden]="isLoggedIn">
+    <h4>You have no access here!</h4>
   </div>
-</div>
-<div [hidden]="isLoggedIn">
-  <h4>You have no access here!</h4>
-</div>
+</header>

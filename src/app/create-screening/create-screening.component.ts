@@ -39,7 +39,9 @@ export class CreateScreeningComponent implements OnInit {
   save() {
     this.seanseService.createScreening(this.screening).subscribe(data => console.log(data), error => console.log(error));
     this.screening = new Screening();
-    this.gotoList();
+    setTimeout(() => {
+      console.log(this.gotoList());
+    }, 100);
   }
 
   onSubmit() {

@@ -1,15 +1,27 @@
 <h2>Movie Details - {{movie.title}} </h2>
-
 <hr/>
-<div *ngIf="movie" class="movieInfo">
-  <div>
-    <label><b>Title: </b></label> {{movie.title}}
+<header class="jumbotron">
+  <div *ngIf="movie" class="movieInfo">
+    <div>
+      <label><b>Title: </b></label> {{movie.title}}
+    </div>
+    <div>
+      <label><b>Author: </b></label> {{movie.author}}
+    </div>
+    <div>
+      <label><b>Description: </b></label> {{movie.description}}
+    </div>
+    <div>
+      <label><b>Year: </b></label> {{movie.year}}
+    </div>
+    <div>
+      <label><b>Country: </b></label> {{movie.country}}
+    </div>
+    <div>
+      <label><b>Duration: </b></label> {{movie.duration}}
+    </div>
   </div>
-  <div>
-    <label><b>Author: </b></label> {{movie.author}}
-  </div>
-</div>
 
-<br>
-<br>
-<button (click)="list()" class="btn btn-primary">Back to Movie List</button><br>
+  <br>
+  <button (click)="list()" class="btn btn-primary">Back to Movie List</button>
+</header>

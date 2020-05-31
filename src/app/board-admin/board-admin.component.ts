@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-board-admin',
@@ -7,18 +8,23 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./board-admin.component.sass']
 })
 export class BoardAdminComponent implements OnInit {
-  content = '';
 
-  constructor(private userService: UserService) { }
+  submitted = false;
+  isLoggedIn = false;
+
+  constructor(private tokenStorage: TokenStorageService,
+              private route: ActivatedRoute,
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.userService.getAdminBoard().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+  }
+
+  movieRouter() {
+    this.router.navigate(['movies/add']);
+  }
+
+  seanseRouter() {
+    this.router.navigate(['repertoire/add']);
   }
 }
