@@ -1,5 +1,8 @@
 .nav_bar
-  background-color: dodgerblue
+  background: linear-gradient(90deg, #03a9f4, #008ec7, #0096c2, #03a9f4)
+  background-size: 400%
+  animation: animate 18s alternate infinite
+  min-height: 50px
 
 .navbar-brand
   font-weight: bold
@@ -7,9 +10,35 @@
   font-size: 30px
   transition: 2500ms
 
+@keyframes animate
+  0%
+    background-position: 0%
+  100%
+    background-position: 400%
+
 .navbar-brand:hover
   color: lightgoldenrodyellow
-  transition: 350ms
+  transform: translate(15%, 0)
+  transition: 300ms
+
+.nav_bar:before
+  content: ''
+  position: absolute
+  top: -5px
+  left: -5px
+  right: -5px
+  bottom: 0px
+  z-index: -1
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4)
+  background-size: 400%
+  border-radius: 80px
+  opacity: 0
+  transition: 1000ms
+
+.nav_bar:hover:before
+  filter: blur(20px)
+  opacity: 1
+  animation: animate 30s alternate infinite
 
 .nav-item
   text-align: center
@@ -23,14 +52,32 @@
 
 .nav-item a:hover
   color: white
+  font-size: larger
   transition: 200ms
 
-.navi_block
+.navi_block_logged
   margin: auto
+  transform: translate(54%)
+
+.navi_block_logout
+  margin: auto
+  transform: translate(20%)
 
 .login_block *
+  margin: auto
   border: none
   font-size: 20px
 
 .login_block ul li:hover
   color: white
+
+.boards a
+  font-size: medium
+  color: black
+  transition: 1500ms
+
+.boards a:hover
+  color: white
+  font-size: large
+  font-weight: bold
+  transition: 200ms

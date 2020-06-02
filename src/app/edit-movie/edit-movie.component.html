@@ -3,6 +3,7 @@
 
 <hr/>
 <header class="jumbotron">
+  <h4>Please provide informations about the updated movie.</h4><br>
   <form (ngSubmit)="f.form.valid && onSubmit()"
         #f="ngForm"
         novalidate>
@@ -47,7 +48,7 @@
       <br>
       <div class="controls">
         <label><b>New year</b></label>
-        <input type="text" class="form-control" id="year" [(ngModel)]="movie.year" name="year"
+        <input type="number" class="form-control" id="year" [(ngModel)]="movie.year" name="year"
                #year="ngModel">
       </div>
       <div

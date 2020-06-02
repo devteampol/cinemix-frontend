@@ -18,6 +18,9 @@ export class BoardAdminComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+    }
   }
 
   movieRouter() {
