@@ -1,9 +1,10 @@
-<h2>Edit Seanse '{{screening.id}}'</h2>
+<h2>Editing Seanse '{{screening.id}}'</h2>
 <h2>"{{screening.movie.title}}, room {{screening.room}}, {{screening.date}}"</h2>
 <hr/>
 <header class="jumbotron">
   <div [hidden]="!isLoggedIn">
     <div [hidden]="submitted" style="width: 400px; margin: auto;">
+      <h4>Please provide informations about the updated seanse.</h4><br>
       <form (ngSubmit)="f.form.valid && onSubmit()"
             #f="ngForm"
             novalidate>
