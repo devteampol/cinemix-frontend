@@ -24,11 +24,6 @@ export class CreateMovieComponent implements OnInit {
     }
   }
 
-  newMovie(): void {
-    this.submitted = false;
-    this.movie = new Movie();
-  }
-
   save() {
     this.movieService.createMovie(this.movie).subscribe(data => console.log(data), error => console.log(error));
     this.movie = new Movie();
