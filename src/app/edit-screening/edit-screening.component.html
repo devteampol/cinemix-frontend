@@ -3,7 +3,7 @@
 <hr/>
 <header class="jumbotron">
   <div [hidden]="!isLoggedIn">
-    <div [hidden]="submitted" style="width: 400px; margin: auto;">
+    <div [hidden]="submitted" style="width: 600px; margin: auto;">
       <h4>Please provide informations about the updated seanse.</h4><br>
       <form (ngSubmit)="f.form.valid && onSubmit()"
             #f="ngForm"
@@ -63,5 +63,12 @@
 
       </form>
     </div>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+  </div>
+  <div [hidden]="isLoggedIn">
+    <h4>You have no access here!</h4>
   </div>
 </header>

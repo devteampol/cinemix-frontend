@@ -3,100 +3,105 @@
 
 <hr/>
 <header class="jumbotron">
-  <h4>Please provide informations about the updated movie.</h4><br>
-  <form (ngSubmit)="f.form.valid && onSubmit()"
-        #f="ngForm"
-        novalidate>
-    <div *ngIf="movie">
-      <div class="controls">
-        <label><b>New title*</b></label>
-        <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title"
-               #title="ngModel">
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && title.invalid">
-        Enter new movie title!
-      </div>
-      <br>
-      <div class="controls">
-        <label><b>New author*</b></label>
-        <input type="text" class="form-control" id="author" required [(ngModel)]="movie.author" name="author"
-               #author="ngModel">
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && author.invalid">
-        Enter new movie author!
-      </div>
+  <div [hidden]="!isLoggedIn">
+    <div [hidden]="submitted" style="width: 600px; margin: auto;">
+      <h4>Please provide informations about the updated movie.</h4><br>
+      <form (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate>
+        <div *ngIf="movie">
+          <div class="controls">
+            <label><b>New title*</b></label>
+            <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title"
+                   #title="ngModel">
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && title.invalid">
+            Enter new movie title!
+          </div>
+          <br>
+          <div class="controls">
+            <label><b>New author*</b></label>
+            <input type="text" class="form-control" id="author" required [(ngModel)]="movie.author" name="author"
+                   #author="ngModel">
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && author.invalid">
+            Enter new movie author!
+          </div>
 
-      <br>
-      <div class="controls">
-        <label><b>New description</b></label>
-        <input type="text" class="form-control" id="description" [(ngModel)]="movie.description" name="description"
-               #description="ngModel">
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && description.invalid">
-        Enter new movie description!
-      </div>
+          <br>
+          <div class="controls">
+            <label><b>New description</b></label>
+            <input type="text" class="form-control" id="description" [(ngModel)]="movie.description" name="description"
+                   #description="ngModel">
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && description.invalid">
+            Enter new movie description!
+          </div>
 
-      <br>
-      <div class="controls">
-        <label><b>New year</b></label>
-        <input type="number" class="form-control" id="year" [(ngModel)]="movie.year" name="year"
-               #year="ngModel">
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && year.invalid">
-        Enter new movie year!
-      </div>
+          <br>
+          <div class="controls">
+            <label><b>New year</b></label>
+            <input type="number" class="form-control" id="year" [(ngModel)]="movie.year" name="year"
+                   #year="ngModel">
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && year.invalid">
+            Enter new movie year!
+          </div>
 
-      <br>
-      <div class="controls">
-        <label><b>New country</b></label>
-        <input type="text" class="form-control" id="country" [(ngModel)]="movie.country" name="country"
-               #country="ngModel">
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && country.invalid">
-        Enter new movie country!
-      </div>
+          <br>
+          <div class="controls">
+            <label><b>New country</b></label>
+            <input type="text" class="form-control" id="country" [(ngModel)]="movie.country" name="country"
+                   #country="ngModel">
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && country.invalid">
+            Enter new movie country!
+          </div>
 
-      <br>
-      <div class="controls">
-        <label><b>New duration*</b></label>
-        <input type="number" class="form-control" id="duration" required [(ngModel)]="movie.duration" name="duration"
-               #duration="ngModel">
-      </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && duration.invalid">
-        Enter movie duration in minutes!
-      </div>
+          <br>
+          <div class="controls">
+            <label><b>New duration*</b></label>
+            <input type="number" class="form-control" id="duration" required [(ngModel)]="movie.duration"
+                   name="duration"
+                   #duration="ngModel">
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && duration.invalid">
+            Enter movie duration in minutes!
+          </div>
+        </div>
+        <br>
+        <p>Fields marked with <b>*</b> are required.</p>
+        <div class="buttons">
+          <button type="submit" class="btn btn-success">Update movie</button>
+          <button (click)="list()" class="btn btn-primary">Back to Movie List</button>
+          <br>
+        </div>
+      </form>
     </div>
-    <br>
-    <p>Fields marked with <b>*</b> are required.</p>
-    <div class="buttons">
-      <button type="submit" class="btn btn-success">Update movie</button>
-      <button (click)="list()" class="btn btn-primary">Back to Movie List</button>
-      <br>
-    </div>
-  </form>
 
-  <div [hidden]="!submitted">
-    <h4>You submitted successfully!</h4>
-  </div>
-  <div [hidden]="isLoggedIn">
-    <h4>You have no access here!</h4>
+    <div [hidden]="!submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+    <div [hidden]="isLoggedIn">
+      <h4>You have no access here!</h4>
+    </div>
   </div>
 </header>
