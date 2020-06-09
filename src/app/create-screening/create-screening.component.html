@@ -1,9 +1,11 @@
+<hr/>
 <h2>Create Seanse</h2>
 <hr/>
 <header class="jumbotron">
   <div [hidden]="!isLoggedIn">
     <div [hidden]="submitted" style="width: 600px; margin: auto;">
       <h4>Please provide informations about the seanse.</h4><br>
+      <hr/>
       <form (ngSubmit)="f.form.valid && onSubmit()"
             #f="ngForm"
             novalidate>
@@ -51,7 +53,7 @@
           *ngIf="f.submitted && date.invalid">
           Enter seanse date!
         </div>
-
+        <hr/>
         <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Submit</button>
       </form>
     </div>

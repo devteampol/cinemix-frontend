@@ -1,12 +1,15 @@
+<hr/>
 <h2>Admin board</h2>
 <hr/>
 <header class="jumbotron">
   <div [hidden]="!isLoggedIn">
     <h4>Cinema management</h4>
+    <hr/>
     <div class="buttons">
       <button (click)="movieRouter()" class="btn btn-primary">Create a movie</button>
       <button (click)="seanseRouter()" class="btn btn-primary">Create a seanse</button>
     </div>
+    <hr/>
   </div>
   <div [hidden]="isLoggedIn">
     <h4>You have no access here!</h4>

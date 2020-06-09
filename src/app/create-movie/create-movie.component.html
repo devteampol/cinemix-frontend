@@ -1,9 +1,11 @@
+<hr/>
 <h2>Create Movie</h2>
 <hr/>
 <header class="jumbotron">
   <div [hidden]="!isLoggedIn">
     <div [hidden]="submitted" style="width: 600px; margin: auto;">
       <h4>Please provide informations about the movie.</h4><br>
+      <hr/>
       <form (ngSubmit)="f.form.valid && onSubmit()"
             #f="ngForm"
             novalidate>
@@ -38,7 +40,8 @@
 
         <div class="form-group">
           <label for="year">Year</label>
-          <input type="number" class="form-control" id="year" [(ngModel)]="movie.author" name="year"
+          <input type="number" min="1900" max="2025" step="1" class="form-control" id="year" [(ngModel)]="movie.year"
+                 name="year"
                  #year="ngModel">
         </div>
         <div
@@ -55,7 +58,8 @@
 
         <div class="form-group">
           <label for="duration">Duration<b>*</b></label>
-          <input type="number" class="form-control" id="duration" required [(ngModel)]="movie.duration" name="duration"
+          <input type="number" min="1" step="1" class="form-control" id="duration" required [(ngModel)]="movie.duration"
+                 name="duration"
                  #duration="ngModel">
         </div>
         <div
@@ -66,6 +70,7 @@
         </div>
 
         <p>Fields marked with <b>*</b> are required.</p>
+        <hr/>
         <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Submit</button>
       </form>
     </div>

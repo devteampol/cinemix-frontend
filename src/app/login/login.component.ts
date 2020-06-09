@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.roles = this.tokenStorage.getUser().roles;
       setTimeout(() => {
         console.log(this.homeRouter());
-      }, 2000);
+      }, 1000);
     }
   }
 
