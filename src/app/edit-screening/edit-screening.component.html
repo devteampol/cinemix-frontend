@@ -1,3 +1,4 @@
+<hr/>
 <h2>Editing Seanse '{{screening.id}}'</h2>
 <h2>"{{screening.movie.title}}, room {{screening.room}}, {{screening.date}}"</h2>
 <hr/>
@@ -5,6 +6,7 @@
   <div [hidden]="!isLoggedIn">
     <div [hidden]="submitted" style="width: 600px; margin: auto;">
       <h4>Please provide informations about the updated seanse.</h4><br>
+      <hr/>
       <form (ngSubmit)="f.form.valid && onSubmit()"
             #f="ngForm"
             novalidate>
@@ -53,14 +55,13 @@
           *ngIf="f.submitted && date.invalid">
           Enter seanse date!
         </div>
-
+        <hr/>
         <div class="buttons">
           <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Update seanse</button>
           <button (click)="gotoList()" class="btn btn-primary" style="width: 100%; margin: 10px auto;">Back to
             Repertoire
           </button>
         </div>
-
       </form>
     </div>
   </div>

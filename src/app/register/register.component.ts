@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = false;
         setTimeout(() => {
           console.log(this.homeRouter());
-        }, 3000);
+        }, 1500);
       },
       err => {
         this.errorMessage = err.error.message;

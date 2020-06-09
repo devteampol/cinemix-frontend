@@ -4,8 +4,6 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
@@ -25,7 +23,6 @@ import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.d
 import {RepertoireComponent} from './repertoire/repertoire.component';
 import {CreateScreeningComponent} from './create-screening/create-screening.component';
 import {EditScreeningComponent} from './edit-screening/edit-screening.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -50,12 +47,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatFormFieldModule
+    HttpClientModule
   ],
-  providers: [authInterceptorProviders, MatDatepickerModule],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {
