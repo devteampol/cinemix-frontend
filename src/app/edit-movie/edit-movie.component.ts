@@ -37,7 +37,9 @@ export class EditMovieComponent implements OnInit {
 
   update() {
     this.movieService.updateMovie(this.movie).subscribe(data => console.log(data), error => console.log(error));
-    this.list();
+    setTimeout(() => {
+      console.log(this.list());
+    }, 200);
   }
 
   onSubmit() {
