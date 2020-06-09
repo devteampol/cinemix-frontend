@@ -1,6 +1,8 @@
 <hr/>
 <h2>Editing Seanse '{{screening.id}}'</h2>
-<h2>"{{screening.movie.title}}, room {{screening.room}}, {{screening.date}}"</h2>
+<div [hidden]="!isLoggedIn">
+  <h2>"{{screening.movie}}, room {{screening.room}}, {{screening.date}}"</h2>
+</div>
 <hr/>
 <header class="jumbotron">
   <div [hidden]="!isLoggedIn">

@@ -41,7 +41,7 @@ export class CreateScreeningComponent implements OnInit {
     this.screening = new Screening();
     setTimeout(() => {
       console.log(this.gotoList());
-    }, 100);
+    }, 200);
   }
 
   onSubmit() {

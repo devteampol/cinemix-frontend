@@ -1,6 +1,8 @@
 <hr/>
 <h2>Edit Movie</h2>
-<h2>"{{movie.title}}"</h2>
+<div [hidden]="!isLoggedIn">
+  <h2>"{{movie.title}}"</h2>
+</div>
 <hr/>
 <header class="jumbotron">
   <div [hidden]="!isLoggedIn">

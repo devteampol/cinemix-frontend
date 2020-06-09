@@ -30,10 +30,10 @@ export class EditScreeningComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.reloadData();
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
     }
+    this.reloadData();
     this.screening = new Screening();
     this.id = this.route.snapshot.params['id'];
     this.screeningService.getScreening(this.id)
@@ -64,7 +64,7 @@ export class EditScreeningComponent implements OnInit {
     this.screeningService.updateScreening(this.screeningTranslated).subscribe(data => console.log(data), error => console.log(error));
     setTimeout(() => {
       console.log(this.gotoList());
-    }, 100);
+    }, 200);
   }
 
   onSubmit() {
