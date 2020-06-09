@@ -1,69 +1,73 @@
 <div id="app">
-  <nav class="navbar navbar-expand navbar-dark nav_bar">
-    <a href="#" class="navbar-brand">Cinemix</a>
+  <div class="complete_bar">
+    <nav class="navbar navbar-expand navbar-dark nav_bar">
+      <a href="#" class="navbar-brand">Cinemix</a>
 
-    <div class="navi_block_logged" *ngIf="isLoggedIn">
-      <ul class="navbar-nav mr-auto" routerLinkActive="active">
-        <li class="nav-item">
-          <a href="/home" class="nav-link" routerLink="home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="/movies" class="nav-link" routerLink="movies"><b>Movies</b></a>
-        </li>
-        <li class="nav-item">
-          <a href="/repertoire" class="nav-link" routerLink="repertoire"><b>Repertoire</b></a>
-        </li>
-      </ul>
-    </div>
+      <div class="navi_block_logged" *ngIf="isLoggedIn">
+        <ul class="navbar-nav mr-auto" routerLinkActive="active">
+          <li class="nav-item">
+            <a href="/home" class="nav-link" routerLink="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="/movies" class="nav-link" routerLink="movies"><b>Movies</b></a>
+          </li>
+          <li class="nav-item">
+            <a href="/repertoire" class="nav-link" routerLink="repertoire"><b>Repertoire</b></a>
+          </li>
+        </ul>
+      </div>
 
-    <div class="navi_block_logout" *ngIf="!isLoggedIn">
-      <ul class="navbar-nav mr-auto" routerLinkActive="active">
-        <li class="nav-item">
-          <a href="/home" class="nav-link" routerLink="home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="/movies" class="nav-link" routerLink="movies"><b>Movies</b></a>
-        </li>
-        <li class="nav-item">
-          <a href="/repertoire" class="nav-link" routerLink="repertoire"><b>Repertoire</b></a>
-        </li>
-      </ul>
-    </div>
+      <div class="navi_block_logout" *ngIf="!isLoggedIn">
+        <ul class="navbar-nav mr-auto" routerLinkActive="active">
+          <li class="nav-item">
+            <a href="/home" class="nav-link" routerLink="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="/movies" class="nav-link" routerLink="movies"><b>Movies</b></a>
+          </li>
+          <li class="nav-item">
+            <a href="/repertoire" class="nav-link" routerLink="repertoire"><b>Repertoire</b></a>
+          </li>
+        </ul>
+      </div>
 
-    <div class="login_block">
-      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-        <li class="nav-item">
-          <a href="/register" class="nav-link" routerLink="register">Register</a>
-        </li>
-        <li class="nav-item">
-          <a href="/login" class="nav-link" routerLink="login" style="color: limegreen">Login</a>
-        </li>
-      </ul>
+      <div class="login_block">
+        <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a href="/register" class="nav-link" routerLink="register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a href="/login" class="nav-link" routerLink="login" style="color: limegreen">Login</a>
+          </li>
+        </ul>
 
-      <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-        <li class="boards" *ngIf="showAdminBoard">
-          <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-        </li>
-        <li class="boards" *ngIf="showModeratorBoard">
-          <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-        </li>
-        <li class="boards">
-          <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User Board</a>
-        </li>
-        <li class="nav-item">
-          <a href="/profile" class="nav-link" routerLink="profile" style="text-transform: uppercase; color: indigo">{{ username }}</a>
-        </li>
-        <li class="nav-item">
-          <a href class="nav-link" (click)="logout()" style="color: red">Logout</a>
-        </li>
-      </ul>
-    </div>
+        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+          <li class="boards" *ngIf="showAdminBoard">
+            <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+          </li>
+          <li class="boards" *ngIf="showModeratorBoard">
+            <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
+          </li>
+          <li class="boards">
+            <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User Board</a>
+          </li>
+          <li class="nav-item">
+            <a href="/profile" class="nav-link" routerLink="profile"
+               style="text-transform: uppercase; color: indigo">{{ username }}</a>
+          </li>
+          <li class="nav-item">
+            <a href class="nav-link" (click)="logout()" style="color: red">Logout</a>
+          </li>
+        </ul>
+      </div>
 
-  </nav>
+    </nav>
+  </div>
 
   <div class="container">
     <router-outlet></router-outlet>
   </div>
+
 </div>
 
 
