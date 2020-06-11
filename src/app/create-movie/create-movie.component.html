@@ -10,7 +10,7 @@
             #f="ngForm"
             novalidate>
         <div class="form-group">
-          <label for="title">Title<b>*</b></label>
+          <label for="title">Title<strong>*</strong></label>
           <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title"
                  #title="ngModel">
         </div>
@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group">
-          <label for="author">Author<b>*</b></label>
+          <label for="author">Author<strong>*</strong></label>
           <input type="text" class="form-control" id="author" required [(ngModel)]="movie.author" name="author"
                  #author="ngModel">
         </div>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-group">
-          <label for="duration">Duration<b>*</b></label>
+          <label for="duration">Duration<strong>*</strong></label>
           <input type="number" min="1" step="1" class="form-control" id="duration" required [(ngModel)]="movie.duration"
                  name="duration"
                  #duration="ngModel">
@@ -69,7 +69,7 @@
           Enter movie duration in minutes.
         </div>
 
-        <p>Fields marked with <b>*</b> are required.</p>
+        <p>Fields marked with <strong>*</strong> are required.</p>
         <hr/>
         <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Submit</button>
       </form>
