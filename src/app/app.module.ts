@@ -23,6 +23,9 @@ import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.d
 import {RepertoireComponent} from './repertoire/repertoire.component';
 import {CreateScreeningComponent} from './create-screening/create-screening.component';
 import {EditScreeningComponent} from './edit-screening/edit-screening.component';
+import {HallListComponent} from './hall-list/hall-list.component';
+import {EditHallComponent} from './edit-hall/edit-hall.component';
+import {CreateHallComponent} from './create-hall/create-hall.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import {EditScreeningComponent} from './edit-screening/edit-screening.component'
     ConfirmEqualValidatorDirective,
     RepertoireComponent,
     CreateScreeningComponent,
-    EditScreeningComponent
+    EditScreeningComponent,
+    HallListComponent,
+    EditHallComponent,
+    CreateHallComponent
   ],
   imports: [
     BrowserModule,

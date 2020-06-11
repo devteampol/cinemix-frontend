@@ -30,4 +30,8 @@ export class BoardAdminComponent implements OnInit {
   seanseRouter() {
     this.router.navigate(['repertoire/add']);
   }
+
+  hallRouter() {
+    this.router.navigate(['halls/add']);
+  }
 }

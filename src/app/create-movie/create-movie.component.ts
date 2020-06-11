@@ -27,7 +27,9 @@ export class CreateMovieComponent implements OnInit {
   save() {
     this.movieService.createMovie(this.movie).subscribe(data => console.log(data), error => console.log(error));
     this.movie = new Movie();
-    this.gotoList();
+    setTimeout(() => {
+      console.log(this.gotoList());
+    }, 750);
   }
 
   onSubmit() {

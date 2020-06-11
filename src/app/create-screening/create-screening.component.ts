@@ -26,10 +26,10 @@ export class CreateScreeningComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.reloadData();
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
     }
+    this.reloadData();
   }
 
   reloadData() {
@@ -41,7 +41,7 @@ export class CreateScreeningComponent implements OnInit {
     this.screening = new Screening();
     setTimeout(() => {
       console.log(this.gotoList());
-    }, 200);
+    }, 750);
   }
 
   onSubmit() {
