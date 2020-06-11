@@ -1,0 +1,40 @@
+<hr/>
+<h2>Halls List</h2>
+<hr/>
+<header class="jumbotron">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Hall number</th>
+          <th>Seats quantity</th>
+          <th>Availability</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>120</td>
+          <td>Available</td>
+          <td class="buttons">
+            (Manual row test)
+            <button (click)="hallEdit(1)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
+            <button class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
+          </td>
+        </tr>
+        <tr *ngFor="let hall of halls | async">
+          <td>{{hall.id}}</td>
+          <td>{{hall.seatsQuantity}}</td>
+          <td>{{hall.isActive}}</td>
+          <td class="buttons">
+            <button (click)="hallEdit(hall.id)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
+            <button (click)="hallDelete(hall)" class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</header>

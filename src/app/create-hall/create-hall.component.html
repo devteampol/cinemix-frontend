@@ -1,0 +1,43 @@
+<hr/>
+<h2>Create Hall</h2>
+<hr/>
+<header class="jumbotron">
+  <div [hidden]="!isLoggedIn">
+    <div [hidden]="submitted" style="width: 600px; margin: auto;">
+      <h4>Please provide informations about the hall.</h4><br>
+      <hr/>
+      <form (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate>
+        <div class="form-group">
+          <label for="seats">Seats quantity<b>*</b></label>
+          <input type="text" class="form-control" id="seats" required [(ngModel)]="hall.seatsQuantity" name="seats"
+                 #seats="ngModel">
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && seats.invalid">
+          Enter seats quantity!
+        </div>
+
+        <div class="form-group">
+          <label for="isActive">Hall availability</label>
+          <input type="checkbox" class="form-control" id="isActive" required [(ngModel)]="hall.isActive" name="isActive"
+                 #isActive="ngModel">
+        </div>
+
+        <p>Fields marked with <b>*</b> are required.</p>
+        <hr/>
+        <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Submit</button>
+      </form>
+    </div>
+
+    <div [hidden]="!submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+  </div>
+  <div [hidden]="isLoggedIn">
+    <h4>You have no access here!</h4>
+  </div>
+</header>

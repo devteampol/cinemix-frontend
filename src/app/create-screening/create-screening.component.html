@@ -12,7 +12,7 @@
         <div class="form-group">
           <label for="movie">Select movie</label>
           <select class="form-control" id="movie" required [(ngModel)]="screening.movie" name="movie" #movie="ngModel">
-            <option *ngFor="let movie of movies | async" value="{{movie.id}}">{{movie.title}}</option>
+            <option *ngFor="let movie of movies | async" [value]="movie">{{movie.title}}</option>
           </select>
         </div>
         <div

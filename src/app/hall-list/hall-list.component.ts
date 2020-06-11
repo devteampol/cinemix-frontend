@@ -1,24 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {Movie} from '../_models/movie';
-import {Observable} from 'rxjs';
-import {MovieService} from '../_services/movie.service';
 import {Router} from '@angular/router';
 import {TokenStorageService} from '../_services/token-storage.service';
+import {Observable} from 'rxjs';
+import {Hall} from '../_models/hall';
+import {HallService} from '../_services/hall.service';
 
 @Component({
-  selector: 'app-movie-list',
-  templateUrl: './movie-list.component.html',
-  styleUrls: ['./movie-list.component.sass']
+  selector: 'app-hall-list',
+  templateUrl: './hall-list.component.html',
+  styleUrls: ['./hall-list.component.sass']
 })
-export class MovieListComponent implements OnInit {
-  movies: Observable<Movie[]>;
+export class HallListComponent implements OnInit {
+
+  halls: Observable<Hall[]>;
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
 
-  constructor(private movieService: MovieService, private router: Router, private tokenStorageService: TokenStorageService) {
+  constructor(private hallService: HallService, private router: Router, private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {
@@ -37,22 +38,17 @@ export class MovieListComponent implements OnInit {
   }
 
   reloadData() {
-    this.movies = this.movieService.getMovieList();
+    this.halls = this.hallService.getHallList();
   }
 
-  movieDetails(id: number) {
-    this.router.navigate(['movies/details/', id]);
+  hallEdit(id: number) {
+    this.router.navigate(['halls/edit/', id]);
   }
 
-  movieEdit(id: number) {
-    this.router.navigate(['movies/edit/', id]);
-  }
-
-  movieDelete(movie: Movie) {
-    this.movieService.deleteMovie(movie.id).subscribe(data => console.log(data), error => console.log(error));
+  hallDelete(hall: Hall) {
+    this.hallService.deleteHall(hall.id).subscribe(data => console.log(data), error => console.log(error));
     setTimeout(() => {
       console.log(this.reloadData());
     }, 200);
   }
-
 }

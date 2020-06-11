@@ -15,6 +15,9 @@ import {EditMovieComponent} from './edit-movie/edit-movie.component';
 import {RepertoireComponent} from './repertoire/repertoire.component';
 import {CreateScreeningComponent} from './create-screening/create-screening.component';
 import {EditScreeningComponent} from './edit-screening/edit-screening.component';
+import {HallListComponent} from './hall-list/hall-list.component';
+import {CreateHallComponent} from './create-hall/create-hall.component';
+import {EditHallComponent} from './edit-hall/edit-hall.component';
 
 
 const routes: Routes = [
@@ -32,6 +35,9 @@ const routes: Routes = [
   {path: 'repertoire', component: RepertoireComponent},
   {path: 'repertoire/add', component: CreateScreeningComponent},
   {path: 'repertoire/edit/:id', component: EditScreeningComponent},
+  {path: 'halls', component: HallListComponent},
+  {path: 'halls/add', component: CreateHallComponent},
+  {path: 'halls/edit/:id', component: EditHallComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
