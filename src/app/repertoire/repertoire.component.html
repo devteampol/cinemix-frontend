@@ -8,18 +8,23 @@
         <thead>
         <tr>
           <th>Movie</th>
-          <th>Room</th>
+          <th>Hall</th>
           <th>Date</th>
+          <th>Available tickets</th>
           <th></th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let screening of screenings | async">
           <td>{{screening.movie.title}}</td>
-          <td>{{screening.room}}</td>
+          <td>{{screening.hall.id}}</td>
           <td>{{screening.date}}</td>
+          <td style="color: dodgerblue; font-weight: bold" *ngIf="screening.tickets > 0">{{screening.tickets}}</td>
+          <td style="color: red; font-weight: bold" *ngIf="screening.tickets <= 0">{{screening.tickets}}</td>
           <td class="buttons">
-            <button class="btn btn-outline-info" *ngIf="isLoggedIn">Reserve ticket</button>
+            <button (click)="reserveTicket(screening.id, 1)" class="btn btn-info" *ngIf="isLoggedIn">Reserve
+              ticket
+            </button>
             <button (click)="screeningEdit(screening.id)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
             <button (click)="screeningDelete(screening)" class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
           </td>

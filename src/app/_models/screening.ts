@@ -1,8 +1,10 @@
 import {Movie} from './movie';
+import {Hall} from './hall';
 
 export class Screening {
   id: number;
-  movie: Movie;
   date: string;
-  room: number;
+  movie: Movie;
+  hall: Hall;
+  tickets: number;
 }

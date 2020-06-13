@@ -48,7 +48,14 @@ export class RepertoireComponent implements OnInit {
     this.screeningService.deleteScreening(screening.id).subscribe(data => console.log(data), error => console.log(error));
     setTimeout(() => {
       console.log(this.reloadData());
-    }, 100);
+    }, 200);
+  }
+
+  reserveTicket(screeningId: number, ticketsAmount: number) {
+    this.screeningService.reserveTickets(screeningId, ticketsAmount).subscribe(data => console.log(data), error => console.log(error));
+    setTimeout(() => {
+      console.log(this.reloadData());
+    }, 200);
   }
 
 }

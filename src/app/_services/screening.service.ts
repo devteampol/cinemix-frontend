@@ -27,10 +27,14 @@ export class ScreeningService {
   }
 
   deleteScreening(id: number): Observable<any> {
-    return this.http.delete(`${API_URL + API_SCREENING_URL + 'delete/'}${id}`);
+    return this.http.delete(`${API_URL + API_SCREENING_URL + 'delete'}/${id}`);
   }
 
   getScreeningList(): Observable<any> {
     return this.http.get(`${API_URL + API_SCREENING_URL + 'all'}`);
+  }
+
+  reserveTickets(screeningId: number, ticketsAmount: number): Observable<any> {
+    return this.http.put(`${API_URL + API_SCREENING_URL + 'reservation'}/${screeningId}/${ticketsAmount}`, null);
   }
 }
