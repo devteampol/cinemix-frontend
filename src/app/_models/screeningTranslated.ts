@@ -1,6 +1,7 @@
 export class ScreeningTranslated {
   id: number;
-  movie: number;
   date: string;
-  room: number;
+  movie: number;
+  hall: number;
+  tickets: number;
 }

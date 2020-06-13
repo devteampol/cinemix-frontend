@@ -1,7 +1,7 @@
 <hr/>
 <h2>Editing Seanse '{{screening.id}}'</h2>
 <div [hidden]="!isLoggedIn">
-  <h2>"{{screening.movie.title}}, room {{screening.room}}, {{screening.date}}"</h2>
+  <h2>"{{screening.movie.title}}, hall {{screening.hall.id}}, {{screening.date}}"</h2>
 </div>
 <hr/>
 <header class="jumbotron">
@@ -14,7 +14,7 @@
             novalidate>
         <div class="form-group">
           <label for="movie">Select new movie</label>
-          <select [compareWith]="compareFn" class="form-control" id="movie" required [(ngModel)]="screening.movie"
+          <select [compareWith]="compareMovie" class="form-control" id="movie" required [(ngModel)]="screening.movie"
                   name="movie" #movie="ngModel">
             <option *ngFor="let movie of movies | async" [ngValue]="movie">{{movie.title}}</option>
           </select>
@@ -27,23 +27,24 @@
         </div>
 
         <div class="form-group">
-          <label for="room">Select new room</label>
-          <select class="form-control" id="room" required [(ngModel)]="screening.room" name="room" #room="ngModel">
-            <option value="1">Room 1</option>
-            <option value="2">Room 2</option>
-            <option value="3">Room 3</option>
-            <option value="4">Room 4</option>
-            <option value="5">Room 5</option>
-            <option value="6">Room 6</option>
-            <option value="7">Room 7</option>
-            <option value="8">Room 8</option>
+          <label for="hall">Select new hall</label>
+          <select [compareWith]="compareHall" (change)="checkHallAvailability()" class="form-control" id="hall" required
+                  [(ngModel)]="screening.hall"
+                  name="hall" #hall="ngModel">
+            <option *ngFor="let hall of halls | async" [ngValue]="hall">Hall {{hall.id}}</option>
           </select>
         </div>
         <div
           class="alert alert-danger"
           role="alert"
-          *ngIf="f.submitted && room.invalid">
-          Choose a room!
+          *ngIf="f.submitted && hall.invalid">
+          Choose a hall!
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="!isHallAvailable">
+          Selected hall is disabled! Choose another one.
         </div>
 
         <div class="form-group">
