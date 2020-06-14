@@ -2,7 +2,7 @@
 <h2>Movies List</h2>
 <hr/>
 <header class="jumbotron">
-  <div class="panel panel-primary">
+  <div class="panel panel-primary" *ngIf="!deleteMode">
     <div class="panel-body">
       <table class="table table-striped">
         <thead>
@@ -17,13 +17,26 @@
           <td>{{movie.title}}</td>
           <td>{{movie.author}}</td>
           <td class="buttons">
-            <button (click)="movieDetails(movie.id)" class="btn btn-info">Details</button>
-            <button (click)="movieEdit(movie.id)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
-            <button (click)="movieDelete(movie)" class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
+            <button (click)="movieDetails(movie.id)" class="btn btn-warning">Details</button>
+            <button (click)="movieEdit(movie.id)" class="btn btn-dark" *ngIf="showAdminBoard">Edit</button>
+            <button (click)="enterDeleteing(movie)" class="btn btn-danger" *ngIf="showAdminBoard">Delete</button>
           </td>
         </tr>
         </tbody>
       </table>
     </div>
+  </div>
+
+  <div class="delete-panel" *ngIf="showAdminBoard && deleteMode">
+    <h2>Please confirm movie delete.</h2>
+    <hr/>
+    <p>Movie info:<br>
+      Title: "{{movieToDelete.title}}"<br>
+      Author: {{movieToDelete.author}}<br>
+      Year: {{movieToDelete.year}}<br>
+      Duration: {{movieToDelete.duration}}</p>
+    <hr/>
+    <button (click)="movieDelete(movieToDelete)" class="btn btn-danger" *ngIf="showAdminBoard">Delete</button>
+    <button (click)="quitDeleting()" class="btn btn-secondary" *ngIf="showAdminBoard">Cancel</button>
   </div>
 </header>

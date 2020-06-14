@@ -17,6 +17,8 @@ export class RepertoireComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
+  deleteMode = false;
+  screeningToDelete: Screening;
 
   constructor(private screeningService: ScreeningService, private router: Router, private tokenStorageService: TokenStorageService) {
   }
@@ -38,6 +40,7 @@ export class RepertoireComponent implements OnInit {
 
   reloadData() {
     this.screenings = this.screeningService.getScreeningList();
+    this.quitDeleting();
   }
 
   screeningEdit(id: number) {
@@ -56,6 +59,15 @@ export class RepertoireComponent implements OnInit {
     setTimeout(() => {
       console.log(this.reloadData());
     }, 200);
+  }
+
+  enterDeleteing(screening: Screening) {
+    this.deleteMode = true;
+    this.screeningToDelete = screening;
+  }
+
+  quitDeleting() {
+    this.deleteMode = false;
   }
 
 }

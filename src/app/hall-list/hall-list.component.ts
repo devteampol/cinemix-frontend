@@ -4,6 +4,7 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {Observable} from 'rxjs';
 import {Hall} from '../_models/hall';
 import {HallService} from '../_services/hall.service';
+import {Screening} from '../_models/screening';
 
 @Component({
   selector: 'app-hall-list',
@@ -18,6 +19,8 @@ export class HallListComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
+  deleteMode = false;
+  hallToDelete: Hall;
 
   constructor(private hallService: HallService, private router: Router, private tokenStorageService: TokenStorageService) {
   }
@@ -39,6 +42,7 @@ export class HallListComponent implements OnInit {
 
   reloadData() {
     this.halls = this.hallService.getHallList();
+    this.quitDeleting();
   }
 
   hallEdit(id: number) {
@@ -50,5 +54,14 @@ export class HallListComponent implements OnInit {
     setTimeout(() => {
       console.log(this.reloadData());
     }, 200);
+  }
+
+  enterDeleteing(hall: Hall) {
+    this.deleteMode = true;
+    this.hallToDelete = hall;
+  }
+
+  quitDeleting() {
+    this.deleteMode = false;
   }
 }
