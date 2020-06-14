@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {MovieService} from '../_services/movie.service';
 import {Router} from '@angular/router';
 import {TokenStorageService} from '../_services/token-storage.service';
+import {Screening} from '../_models/screening';
 
 @Component({
   selector: 'app-movie-list',
@@ -17,6 +18,8 @@ export class MovieListComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
+  deleteMode = false;
+  movieToDelete: Movie;
 
   constructor(private movieService: MovieService, private router: Router, private tokenStorageService: TokenStorageService) {
   }
@@ -38,6 +41,7 @@ export class MovieListComponent implements OnInit {
 
   reloadData() {
     this.movies = this.movieService.getMovieList();
+    this.quitDeleting();
   }
 
   movieDetails(id: number) {
@@ -53,6 +57,15 @@ export class MovieListComponent implements OnInit {
     setTimeout(() => {
       console.log(this.reloadData());
     }, 200);
+  }
+
+  enterDeleteing(movie: Movie) {
+    this.deleteMode = true;
+    this.movieToDelete = movie;
+  }
+
+  quitDeleting() {
+    this.deleteMode = false;
   }
 
 }

@@ -2,7 +2,7 @@
 <h2>Repertoire</h2>
 <hr/>
 <header class="jumbotron">
-  <div class="panel panel-primary">
+  <div class="panel panel-primary" *ngIf="!deleteMode">
     <div class="panel-body">
       <table class="table table-striped">
         <thead>
@@ -20,17 +20,34 @@
           <td>{{screening.hall.id}}</td>
           <td>{{screening.date}}</td>
           <td style="color: dodgerblue; font-weight: bold" *ngIf="screening.tickets > 0">{{screening.tickets}}</td>
-          <td style="color: red; font-weight: bold" *ngIf="screening.tickets <= 0">{{screening.tickets}}</td>
+          <td style="color: red; font-weight: bolder" *ngIf="screening.tickets <= 0">{{screening.tickets}}</td>
           <td class="buttons">
-            <button (click)="reserveTicket(screening.id, 1)" class="btn btn-info" *ngIf="isLoggedIn">Reserve
+            <button (click)="reserveTicket(screening.id, 1)" class="btn btn-info"
+                    *ngIf="isLoggedIn && screening.tickets > 0">Reserve
               ticket
             </button>
-            <button (click)="screeningEdit(screening.id)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
-            <button (click)="screeningDelete(screening)" class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
+            <button disabled (click)="reserveTicket(screening.id, 1)" class="btn btn-outline-info"
+                    *ngIf="isLoggedIn && screening.tickets <= 0">Reserve
+              ticket
+            </button>
+            <button (click)="screeningEdit(screening.id)" class="btn btn-dark" *ngIf="showAdminBoard">Edit</button>
+            <button (click)="enterDeleteing(screening)" class="btn btn-danger" *ngIf="showAdminBoard">Delete</button>
           </td>
         </tr>
         </tbody>
       </table>
     </div>
+  </div>
+
+  <div class="delete-panel" *ngIf="deleteMode">
+    <h2>Please confirm screening delete.</h2>
+    <hr/>
+    <p>Screening info:<br>
+      Movie: "{{screeningToDelete.movie.title}}"<br>
+      Hall {{screeningToDelete.hall.id}}<br>
+      Date: {{screeningToDelete.date}}</p>
+    <hr/>
+    <button (click)="screeningDelete(screeningToDelete)" class="btn btn-danger" *ngIf="showAdminBoard">Delete</button>
+    <button (click)="quitDeleting()" class="btn btn-secondary" *ngIf="showAdminBoard">Cancel</button>
   </div>
 </header>

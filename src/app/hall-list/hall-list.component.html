@@ -2,7 +2,7 @@
 <h2>Halls List</h2>
 <hr/>
 <header class="jumbotron">
-  <div class="panel panel-primary">
+  <div class="panel panel-primary" *ngIf="!deleteMode">
     <div class="panel-body">
       <table class="table table-striped">
         <thead>
@@ -17,15 +17,22 @@
         <tr *ngFor="let hall of halls | async">
           <td>{{hall.id}}</td>
           <td>{{hall.seatsQuantity}}</td>
-          <td style="color: red; font-weight: bold" *ngIf="hall.active===false">disabled</td>
-          <td style="color: dodgerblue; font-weight: bold" *ngIf="hall.active===true">active</td>
+          <td style="color: red; font-weight: bold" *ngIf="!hall.active">disabled</td>
+          <td style="color: dodgerblue; font-weight: bold" *ngIf="hall.active">active</td>
           <td class="buttons">
-            <button (click)="hallEdit(hall.id)" class="btn btn-info" *ngIf="showAdminBoard">Edit</button>
-            <button (click)="hallDelete(hall)" class="btn btn-info" *ngIf="showAdminBoard">Delete</button>
+            <button (click)="hallEdit(hall.id)" class="btn btn-dark" *ngIf="showAdminBoard">Edit</button>
+            <button (click)="enterDeleteing(hall)" class="btn btn-danger" *ngIf="showAdminBoard">Delete</button>
           </td>
         </tr>
         </tbody>
       </table>
     </div>
+  </div>
+
+  <div class="delete-panel" *ngIf="deleteMode">
+    <h2>Please confirm hall '{{hallToDelete.id}}' ({{hallToDelete.seatsQuantity}} seats) delete.</h2>
+    <hr/>
+    <button (click)="hallDelete(hallToDelete)" class="btn btn-danger" *ngIf="showAdminBoard">Delete</button>
+    <button (click)="quitDeleting()" class="btn btn-secondary" *ngIf="showAdminBoard">Cancel</button>
   </div>
 </header>
