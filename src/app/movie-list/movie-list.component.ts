@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {MovieService} from '../_services/movie.service';
 import {Router} from '@angular/router';
 import {TokenStorageService} from '../_services/token-storage.service';
-import {Screening} from '../_models/screening';
 
 @Component({
   selector: 'app-movie-list',
@@ -46,6 +45,10 @@ export class MovieListComponent implements OnInit {
 
   movieDetails(id: number) {
     this.router.navigate(['movies/details/', id]);
+  }
+
+  gotoCreate() {
+    this.router.navigate(['movies/add']);
   }
 
   movieEdit(id: number) {

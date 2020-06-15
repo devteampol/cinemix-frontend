@@ -54,11 +54,8 @@ export class RepertoireComponent implements OnInit {
     }, 200);
   }
 
-  reserveTicket(screeningId: number, ticketsAmount: number) {
-    this.screeningService.reserveTickets(screeningId, ticketsAmount).subscribe(data => console.log(data), error => console.log(error));
-    setTimeout(() => {
-      console.log(this.reloadData());
-    }, 200);
+  reserveTicket(id: number) {
+    this.router.navigate(['reservation/', id]);
   }
 
   enterDeleteing(screening: Screening) {
@@ -68,6 +65,10 @@ export class RepertoireComponent implements OnInit {
 
   quitDeleting() {
     this.deleteMode = false;
+  }
+
+  gotoCreate() {
+    this.router.navigate(['repertoire/add']);
   }
 
 }

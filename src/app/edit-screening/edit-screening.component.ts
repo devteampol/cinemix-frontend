@@ -18,11 +18,11 @@ import {ScreeningTranslated} from '../_models/screeningTranslated';
 export class EditScreeningComponent implements OnInit {
 
   id: number;
-  screening: Screening;
-  screeningTranslated: ScreeningTranslated;
+  screening: Screening = new Screening();
+  screeningTranslated: ScreeningTranslated = new ScreeningTranslated();
   movies: Observable<Movie[]>;
   halls: Observable<Hall[]>;
-  hall: Hall;
+  hall: Hall = new Hall();
   submitted = false;
   isLoggedIn = false;
   isHallAvailable = true;
@@ -40,7 +40,6 @@ export class EditScreeningComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
     }
-    this.screening = new Screening();
     this.id = this.route.snapshot.params['id'];
     this.screeningService.getScreening(this.id)
       .subscribe(data => {

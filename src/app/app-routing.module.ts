@@ -18,7 +18,7 @@ import {EditScreeningComponent} from './edit-screening/edit-screening.component'
 import {HallListComponent} from './hall-list/hall-list.component';
 import {CreateHallComponent} from './create-hall/create-hall.component';
 import {EditHallComponent} from './edit-hall/edit-hall.component';
-
+import {ReservationComponent} from './reservation/reservation.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -38,6 +38,7 @@ const routes: Routes = [
   {path: 'halls', component: HallListComponent},
   {path: 'halls/add', component: CreateHallComponent},
   {path: 'halls/edit/:id', component: EditHallComponent},
+  {path: 'reservation/:id', component: ReservationComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 

@@ -3,6 +3,7 @@
 <hr/>
 <header class="jumbotron">
   <div class="panel panel-primary" *ngIf="!deleteMode">
+    <button id="new" (click)="gotoCreate()" class="btn btn-success" *ngIf="showAdminBoard">Create seanse</button>
     <div class="panel-body">
       <table class="table table-striped">
         <thead>
@@ -22,11 +23,11 @@
           <td style="color: dodgerblue; font-weight: bold" *ngIf="screening.tickets > 0">{{screening.tickets}}</td>
           <td style="color: red; font-weight: bolder" *ngIf="screening.tickets <= 0">{{screening.tickets}}</td>
           <td class="buttons">
-            <button (click)="reserveTicket(screening.id, 1)" class="btn btn-info"
+            <button (click)="reserveTicket(screening.id)" class="btn btn-info"
                     *ngIf="isLoggedIn && screening.tickets > 0">Reserve
               ticket
             </button>
-            <button disabled (click)="reserveTicket(screening.id, 1)" class="btn btn-outline-info"
+            <button disabled (click)="reserveTicket(screening.id)" class="btn btn-outline-info"
                     *ngIf="isLoggedIn && screening.tickets <= 0">Reserve
               ticket
             </button>
@@ -40,7 +41,7 @@
   </div>
 
   <div class="delete-panel" *ngIf="deleteMode">
-    <h2>Please confirm screening delete.</h2>
+    <h2>Please confirm screening deletion.</h2>
     <hr/>
     <p>Screening info:<br>
       Movie: "{{screeningToDelete.movie.title}}"<br>

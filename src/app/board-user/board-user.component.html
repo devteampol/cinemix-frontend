@@ -3,6 +3,24 @@
 <hr/>
 <div class="container">
   <header class="jumbotron">
-    <p>{{ content }} - Functionality on this page will be added in future updates.</p>
+    <div [hidden]="!isLoggedIn">
+      <h3>Your reservations:</h3>
+
+      <div class="reservations">
+        <div class="reservation-info" *ngFor="let reservation of reservations | async">
+          <hr/>
+          <h5>SEANSE ID</h5>
+          <label>{{reservation.screening}}</label>
+          <h5>SEATS QUANTITY</h5>
+          <label>{{reservation.tickets}}</label><br>
+          <hr/>
+          <button (click)="cancelReservation(reservation.id)" class="btn btn-danger">Cancel reservation</button>
+        </div>
+      </div>
+    </div>
+
+    <div [hidden]="isLoggedIn">
+      <h4>You have no access here!</h4>
+    </div>
   </header>
 </div>

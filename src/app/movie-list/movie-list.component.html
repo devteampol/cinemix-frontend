@@ -3,6 +3,7 @@
 <hr/>
 <header class="jumbotron">
   <div class="panel panel-primary" *ngIf="!deleteMode">
+    <button id="new" (click)="gotoCreate()" class="btn btn-success" *ngIf="showAdminBoard">Create movie</button>
     <div class="panel-body">
       <table class="table table-striped">
         <thead>
@@ -28,7 +29,7 @@
   </div>
 
   <div class="delete-panel" *ngIf="showAdminBoard && deleteMode">
-    <h2>Please confirm movie delete.</h2>
+    <h2>Please confirm movie deletion.</h2>
     <hr/>
     <p>Movie info:<br>
       Title: "{{movieToDelete.title}}"<br>
