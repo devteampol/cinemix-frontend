@@ -60,7 +60,12 @@
         </div>
         <hr/>
         <div class="buttons">
-          <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;">Update seanse</button>
+          <button type="submit" class="btn btn-danger" style="width: 100%; margin: 10px auto;"
+                  *ngIf="movie.invalid || hall.invalid || date.invalid || !isHallAvailable">Update seanse
+          </button>
+          <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;"
+                  *ngIf="!movie.invalid && !hall.invalid && !date.invalid && isHallAvailable">Update seanse
+          </button>
           <button (click)="gotoList()" class="btn btn-primary" style="width: 100%; margin: 10px auto;">Back to
             Repertoire
           </button>

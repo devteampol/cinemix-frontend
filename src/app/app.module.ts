@@ -26,6 +26,7 @@ import {EditScreeningComponent} from './edit-screening/edit-screening.component'
 import {HallListComponent} from './hall-list/hall-list.component';
 import {EditHallComponent} from './edit-hall/edit-hall.component';
 import {CreateHallComponent} from './create-hall/create-hall.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {CreateHallComponent} from './create-hall/create-hall.component';
     EditScreeningComponent,
     HallListComponent,
     EditHallComponent,
-    CreateHallComponent
+    CreateHallComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,

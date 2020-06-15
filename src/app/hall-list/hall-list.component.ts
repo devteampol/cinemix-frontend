@@ -4,7 +4,6 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {Observable} from 'rxjs';
 import {Hall} from '../_models/hall';
 import {HallService} from '../_services/hall.service';
-import {Screening} from '../_models/screening';
 
 @Component({
   selector: 'app-hall-list',
@@ -63,5 +62,9 @@ export class HallListComponent implements OnInit {
 
   quitDeleting() {
     this.deleteMode = false;
+  }
+
+  gotoCreate() {
+    this.router.navigate(['halls/add']);
   }
 }

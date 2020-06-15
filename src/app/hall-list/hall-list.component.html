@@ -3,6 +3,7 @@
 <hr/>
 <header class="jumbotron">
   <div class="panel panel-primary" *ngIf="!deleteMode">
+    <button id="new" (click)="gotoCreate()" class="btn btn-success" *ngIf="showAdminBoard">Create hall</button>
     <div class="panel-body">
       <table class="table table-striped">
         <thead>
@@ -30,7 +31,7 @@
   </div>
 
   <div class="delete-panel" *ngIf="deleteMode">
-    <h2>Please confirm hall '{{hallToDelete.id}}' ({{hallToDelete.seatsQuantity}} seats) delete.</h2>
+    <h2>Please confirm hall '{{hallToDelete.id}}' ({{hallToDelete.seatsQuantity}} seats) deletion.</h2>
     <hr/>
     <button (click)="hallDelete(hallToDelete)" class="btn btn-danger" *ngIf="showAdminBoard">Delete</button>
     <button (click)="quitDeleting()" class="btn btn-secondary" *ngIf="showAdminBoard">Cancel</button>

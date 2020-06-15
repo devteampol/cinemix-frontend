@@ -1,0 +1,69 @@
+<hr/>
+<h2>Reserve a ticket</h2>
+<hr/>
+<header class="jumbotron">
+  <div [hidden]="!isLoggedIn">
+    <div [hidden]="submitted" style="width: 600px; margin: auto;">
+      <h4>Please provide number of tickets you want to reserve.</h4><br>
+      <hr/>
+      <div class="main-panel">
+
+        <div class="screening-info">
+          <h5>TICKETS FOR</h5>
+          <hr/>
+          <strong>Title</strong><br>
+          <label>{{screening.movie.title}}</label><br>
+          <hr/>
+          <strong>Hall number</strong><br>
+          <label>{{screening.hall.id}}</label><br>
+          <hr/>
+          <strong>Seanse date</strong><br>
+          <label>{{screening.date}}</label>
+          <hr/>
+        </div>
+
+        <div class="tickets-panel">
+          <h5>Tickets available</h5>
+          <hr/>
+          <h4>{{screening.tickets}}</h4>
+          <hr/>
+          <form (ngSubmit)="f.form.valid && onSubmit()"
+                #f="ngForm"
+                novalidate>
+            <div class="form-group">
+              <label for="tickets">Number of tickets to reserve</label>
+              <input type="number" min="1" max="{{screening.tickets}}" class="form-control" id="tickets" required
+                     [(ngModel)]="reservation.tickets"
+                     name="tickets"
+                     #tickets="ngModel">
+            </div>
+            <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="(f.submitted && tickets.invalid) || tickets.model <= 0 || tickets.model > screening.tickets">
+              Enter the correct number of tickets!
+            </div>
+            <hr/>
+            <div class="buttons-panel">
+              <button type="submit" class="btn btn-success" style="width: 100%; margin: 10px auto;"
+                      *ngIf="!(tickets.model <= 0) && !(tickets.model > screening.tickets)">Reserve
+              </button>
+              <button disabled type="submit" class="btn btn-outline-danger" style="width: 100%; margin: 10px auto;"
+                      *ngIf="(tickets.model <= 0) || (tickets.model > screening.tickets)">Reserve
+              </button>
+              <button (click)="gotoList()" class="btn btn-primary" style="width: 100%; margin: 10px auto;">Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div [hidden]="!submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+  </div>
+  <div [hidden]="isLoggedIn">
+    <h4>You have no access here!</h4>
+  </div>
+</header>
