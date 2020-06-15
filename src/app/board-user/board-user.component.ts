@@ -5,6 +5,8 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {ReservationService} from '../_services/reservation.service';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
+import {Screening} from '../_models/screening';
+import {ScreeningService} from '../_services/screening.service';
 
 @Component({
   selector: 'app-board-user',
@@ -16,6 +18,7 @@ export class BoardUserComponent implements OnInit {
   content = '';
   reservation: Reservation;
   reservations: Observable<Reservation[]>;
+  screenings: Observable<Screening[]>;
   submitted = false;
   isLoggedIn = false;
   username: string;
@@ -23,6 +26,7 @@ export class BoardUserComponent implements OnInit {
   constructor(private userService: UserService,
               private tokenStorage: TokenStorageService,
               private reservationService: ReservationService,
+              private screeningService: ScreeningService,
               private router: Router) {
   }
 
@@ -46,6 +50,7 @@ export class BoardUserComponent implements OnInit {
       const user = this.tokenStorage.getUser();
       this.username = user.username;
       this.reservations = this.reservationService.getUserReservations(this.username);
+      this.screenings = this.screeningService.getScreeningList();
     }
   }
 

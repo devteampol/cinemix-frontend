@@ -5,16 +5,28 @@
   <header class="jumbotron">
     <div [hidden]="!isLoggedIn">
       <h3>Your reservations:</h3>
-
-      <div class="reservations">
-        <div class="reservation-info" *ngFor="let reservation of reservations | async">
+      <hr/>
+      <div>
+        <div *ngFor="let reservation of reservations | async">
+          <div *ngFor="let screening of screenings | async">
+            <div class="reservation-info" *ngIf="reservation.screening === screening.id">
+              <hr/>
+              <h5>Movie title</h5>
+              <label>{{screening.movie.title}}</label>
+              <hr/>
+              <h5>Hall number</h5>
+              <label>{{screening.hall.id}}</label>
+              <hr/>
+              <h5>Seanse date</h5>
+              <label>{{screening.date}}</label>
+              <hr/>
+              <h5>Number of tickets</h5>
+              <label>{{reservation.tickets}}</label><br>
+              <hr/>
+              <button (click)="cancelReservation(reservation.id)" class="btn btn-danger">Cancel reservation</button>
+            </div>
+          </div>
           <hr/>
-          <h5>SEANSE ID</h5>
-          <label>{{reservation.screening}}</label>
-          <h5>SEATS QUANTITY</h5>
-          <label>{{reservation.tickets}}</label><br>
-          <hr/>
-          <button (click)="cancelReservation(reservation.id)" class="btn btn-danger">Cancel reservation</button>
         </div>
       </div>
     </div>
