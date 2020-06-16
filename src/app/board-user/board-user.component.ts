@@ -3,7 +3,6 @@ import {UserService} from '../_services/user.service';
 import {Reservation} from '../_models/reservation';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {ReservationService} from '../_services/reservation.service';
-import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Screening} from '../_models/screening';
 import {ScreeningService} from '../_services/screening.service';
@@ -22,12 +21,13 @@ export class BoardUserComponent implements OnInit {
   submitted = false;
   isLoggedIn = false;
   username: string;
+  deleteMode = false;
+  deleteId: number;
 
   constructor(private userService: UserService,
               private tokenStorage: TokenStorageService,
               private reservationService: ReservationService,
-              private screeningService: ScreeningService,
-              private router: Router) {
+              private screeningService: ScreeningService) {
   }
 
   ngOnInit(): void {
@@ -51,6 +51,7 @@ export class BoardUserComponent implements OnInit {
       this.username = user.username;
       this.reservations = this.reservationService.getUserReservations(this.username);
       this.screenings = this.screeningService.getScreeningList();
+      this.quitDeleting();
     }
   }
 
@@ -59,5 +60,14 @@ export class BoardUserComponent implements OnInit {
     setTimeout(() => {
       console.log(this.reloadData());
     }, 200);
+  }
+
+  enterDeleteing(id: number) {
+    this.deleteMode = true;
+    this.deleteId = id;
+  }
+
+  quitDeleting() {
+    this.deleteMode = false;
   }
 }

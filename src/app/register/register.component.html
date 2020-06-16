@@ -28,7 +28,8 @@
           maxlength="20"
           #username="ngModel"
         />
-        <div class="alert-danger" *ngIf="(f.submitted && username.invalid) || (username.touched && username.invalid)">
+        <div class="alert alert-danger"
+             *ngIf="(f.submitted && username.invalid) || (username.touched && username.invalid)">
           <div *ngIf="username.errors.required">Username is required</div>
           <div *ngIf="username.errors.minlength">
             Username must be at least 3 characters
@@ -49,8 +50,8 @@
           email
           #email="ngModel"
         />
-        <div class="alert-danger" *ngIf="(f.submitted && email.invalid) || (email.touched && email.invalid)">
-          <div *ngIf="email.errors.required">Email is required</div>
+        <div class="alert alert-danger" *ngIf="(f.submitted && email.invalid) || (email.touched && email.invalid)">
+          <div *ngIf="email.errors.required">Email address is required</div>
           <div *ngIf="email.errors.email">
             Email must be a valid email address
           </div>
@@ -68,7 +69,8 @@
           #password="ngModel"
           (input)="confirmPassword.control.updateValueAndValidity()"
         />
-        <div class="alert-danger" *ngIf="(f.submitted && password.invalid) || (password.touched && password.invalid)">
+        <div class="alert alert-danger"
+             *ngIf="(f.submitted && password.invalid) || (password.touched && password.invalid)">
           <div *ngIf="password.errors.required">Password is required</div>
           <div *ngIf="password.errors.minlength">
             Password must be at least 6 characters
@@ -88,11 +90,13 @@
           [(ngModel)]="detached.confirmPassword"
           #confirmPassword="ngModel"
         />
-        <div class="alert-danger" *ngIf="(confirmPassword.touched && confirmPassword.errors?.notEqual &&
-          confirmPassword.invalid) || (f.submitted && confirmPassword.errors?.notEqual &&
-          confirmPassword.invalid) || password.touched">
-          <div *ngIf="confirmPassword.errors?.notEqual">Passwords does not match</div>
-          <div *ngIf="confirmPassword.errors.required">Please confirm your password</div>
+
+        <div class="alert alert-danger" *ngIf="confirmPassword.errors?.notEqual">
+          Passwords does not match
+        </div>
+
+        <div class="alert alert-danger" *ngIf="confirmPassword.errors?.required">
+          Please confirm your password
         </div>
       </div>
 
@@ -100,7 +104,6 @@
         <button class="btn btn-primary btn-block">Sign Up</button>
       </div>
 
-      <br>
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
         Signup failed!<br/>{{ errorMessage }}
       </div>
