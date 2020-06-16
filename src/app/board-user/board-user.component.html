@@ -4,9 +4,9 @@
 <div class="container">
   <header class="jumbotron">
     <div [hidden]="!isLoggedIn">
-      <h3>Your reservations:</h3>
-      <hr/>
-      <div>
+      <div [hidden]="deleteMode">
+        <h3>If you made any reservation, it'll be listed below</h3>
+        <hr/>
         <div *ngFor="let reservation of reservations | async">
           <div *ngFor="let screening of screenings | async">
             <div class="reservation-info" *ngIf="reservation.screening === screening.id">
@@ -23,12 +23,19 @@
               <h5>Number of tickets</h5>
               <label>{{reservation.tickets}}</label><br>
               <hr/>
-              <button (click)="cancelReservation(reservation.id)" class="btn btn-danger">Cancel reservation</button>
+              <button (click)="enterDeleteing(reservation.id)" class="btn btn-danger">Cancel reservation</button>
             </div>
           </div>
           <hr/>
         </div>
       </div>
+    </div>
+
+    <div class="delete-panel" [hidden]="!deleteMode">
+      <h2>Please confirm your reservation cancellation.</h2>
+      <hr/>
+      <button (click)="cancelReservation(deleteId)" class="btn btn-danger">Confirm</button>
+      <button (click)="quitDeleting()" class="btn btn-secondary">Back</button>
     </div>
 
     <div [hidden]="isLoggedIn">

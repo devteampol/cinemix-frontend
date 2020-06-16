@@ -1,4 +1,4 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../_services/auth.service';
 
@@ -41,6 +41,6 @@ export class RegisterComponent implements OnInit {
   }
 
   homeRouter() {
-    this.router.navigate(['home']);
+    this.router.navigate(['login']);
   }
 }
